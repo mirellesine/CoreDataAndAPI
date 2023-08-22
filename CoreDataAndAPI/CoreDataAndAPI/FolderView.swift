@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  FolderView.swift
 //  CoreDataAndAPI
 //
 //  Created by Mirelle Sine on 21/08/23.
@@ -7,28 +7,28 @@
 
 import SwiftUI
 
-struct Folder: Identifiable {
+struct Application: Identifiable {
     var id = UUID()
     var name: String
 }
 
-struct ContentView: View {
-    let folders: [Folder] = [
-            Folder(name: "Folder 1"),
-            Folder(name: "Folder 2"),
-            Folder(name: "Folder 3"),
-            Folder(name: "Folder 4")
+struct FolderView: View {
+    let apps: [Application] = [
+            Application(name: "App 1"),
+            Application(name: "App 2"),
+            Application(name: "App 3"),
+            Application(name: "App 4")
         ]
     var body: some View {
         
         NavigationView {
             List {
-                ForEach(folders) { folder in
+                ForEach(apps) { folder in
                     NavigationLink {
-                        FolderView()
+                        DetailView(apps: "app")
                     } label: {
                         HStack {
-                            Image(systemName: "folder")
+                            Image(systemName: "app")
                                 .foregroundColor(.cyan)
                                     .font(.title)
                             VStack(alignment: .leading) {
@@ -42,13 +42,13 @@ struct ContentView: View {
                     }
                 }
             }
-                .navigationTitle("Folders")
+                .navigationTitle("Apps on this Folder")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
                             //ACAO DO +
                         } label: {
-                            Label("Add Folder", systemImage: "plus")
+                            Label("Add Apps", systemImage: "plus")
                         }
                     }
                 }
@@ -56,8 +56,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct FolderView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        FolderView()
     }
 }
