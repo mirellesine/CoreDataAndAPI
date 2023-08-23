@@ -9,6 +9,7 @@ import CoreData
 import Foundation
 
 class DataController: ObservableObject {
+    // Cria uma instância de NSPersistentContainer com o nome "CoreDataAndAPI"
     let container = NSPersistentContainer(name: "CoreDataAndAPI")
 
     init() {

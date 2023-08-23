@@ -7,24 +7,25 @@
 
 import SwiftUI
 
-struct Folder: Identifiable {
-    var id = UUID()
-    var name: String
-}
+//struct Folder: Identifiable {
+//    var id = UUID()
+//    var name: String
+//}
 
 struct ContentView: View {
+    let folder: Folder
+    
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.name)
+    ]) var folders: FetchedResults<Folder>
+    
+    // state para abrir a modal
     @State private var showingNewFolderModal = false
     
-    let folders: [Folder] = [
-            Folder(name: "Folder 1"),
-            Folder(name: "Folder 2"),
-            Folder(name: "Folder 3"),
-            Folder(name: "Folder 4")
-        ]
     var body: some View {
-        
         NavigationStack {
-            List {
+            ScrollView {
                 ForEach(folders) { folder in
                     NavigationLink {
                         FolderView()
@@ -34,7 +35,7 @@ struct ContentView: View {
                                 .foregroundColor(.cyan)
                                     .font(.title)
                             VStack(alignment: .leading) {
-                                Text(folder.name)
+                                //Text(book)
                                     .font(.headline)
                                 
                                 Text("descricao")
