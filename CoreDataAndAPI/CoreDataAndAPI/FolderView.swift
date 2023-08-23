@@ -7,21 +7,25 @@
 
 import SwiftUI
 
+//elementos que o app pode ter
 struct Application: Identifiable {
     var id = UUID()
     var name: String
 }
 
+//essa view apresenta tudo que tem dentro da pasta
 struct FolderView: View {
+    @State private var showingAppsModal = false
+    
     let apps: [Application] = [
-            Application(name: "App 1"),
-            Application(name: "App 2"),
-            Application(name: "App 3"),
-            Application(name: "App 4")
-        ]
+        Application(name: "App 1"),
+        Application(name: "App 2"),
+        Application(name: "App 3"),
+        Application(name: "App 4")
+    ]
     var body: some View {
         
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(apps) { folder in
                     NavigationLink {
@@ -30,7 +34,7 @@ struct FolderView: View {
                         HStack {
                             Image(systemName: "app")
                                 .foregroundColor(.cyan)
-                                    .font(.title)
+                                .font(.title)
                             VStack(alignment: .leading) {
                                 Text(folder.name)
                                     .font(.headline)
@@ -42,22 +46,25 @@ struct FolderView: View {
                     }
                 }
             }
-                .navigationTitle("Apps on this Folder")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            //ACAO DO +
-                        } label: {
-                            Label("Add Apps", systemImage: "plus")
-                        }
+            .navigationTitle("Apps on this Folder")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingAppsModal.toggle()
+                    } label: {
+                        Label("Add Apps", systemImage: "plus")
                     }
                 }
+            }
+            .sheet(isPresented: $showingAppsModal) {
+                AppsModal()
+            }
         }
     }
-}
-
-struct FolderView_Previews: PreviewProvider {
-    static var previews: some View {
-        FolderView()
+    
+    struct FolderView_Previews: PreviewProvider {
+        static var previews: some View {
+            FolderView()
+        }
     }
 }

@@ -15,6 +15,7 @@ struct CoreDataAndAPIApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            //core data
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }

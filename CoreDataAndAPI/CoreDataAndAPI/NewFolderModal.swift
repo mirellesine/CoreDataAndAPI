@@ -11,6 +11,8 @@ import SwiftUI
 struct NewFolderModal: View {
     
     @State private var folderName = ""
+    //variavel responsavel por fechar a modal
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationView {
@@ -23,8 +25,7 @@ struct NewFolderModal: View {
             }
             .navigationBarTitle("Create New Folder", displayMode: .inline)
             .navigationBarItems(leading: Button(action: {
-                // Fechar o modal - cancelar ação
-                print("cancelar a ação")
+                dismiss()
             }, label: {
                 Text("Cancel")
             }), trailing: Button(action: {

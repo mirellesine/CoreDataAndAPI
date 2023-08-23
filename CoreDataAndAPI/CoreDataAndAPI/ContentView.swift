@@ -13,6 +13,8 @@ struct Folder: Identifiable {
 }
 
 struct ContentView: View {
+    @State private var showingNewFolderModal = false
+    
     let folders: [Folder] = [
             Folder(name: "Folder 1"),
             Folder(name: "Folder 2"),
@@ -21,7 +23,7 @@ struct ContentView: View {
         ]
     var body: some View {
         
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(folders) { folder in
                     NavigationLink {
@@ -46,11 +48,14 @@ struct ContentView: View {
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            //ACAO DO +
+                            showingNewFolderModal.toggle()
                         } label: {
                             Label("Add Folder", systemImage: "plus")
                         }
                     }
+                }
+                .sheet(isPresented: $showingNewFolderModal) {
+                    NewFolderModal()
                 }
         }
     }
