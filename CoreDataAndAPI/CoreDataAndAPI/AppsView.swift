@@ -17,7 +17,7 @@ struct AppsView: View {
         NavigationView {
             VStack {
                 List(items, id: \.self) { item in
-                    NavigationLink(destination: Text("Detail view for \(item)")) {
+                    NavigationLink(destination: DetailView(apps: "App")) {
                         HStack(alignment: .top) {
                             Image(systemName: appIcon)
                                 .resizable()
@@ -34,7 +34,7 @@ struct AppsView: View {
                     }
                 }
             }
-            .navigationBarTitle("Apps", displayMode: .inline)
+            .navigationTitle("All Apps")
         }
     }
 }

@@ -17,6 +17,7 @@
 		C569F1AD2A93E3F00011A00D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C569F1AC2A93E3F00011A00D /* Preview Assets.xcassets */; };
 		C569F1B42A94006F0011A00D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569F1B32A94006F0011A00D /* DetailView.swift */; };
 		C569F1B62A9443930011A00D /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569F1B52A9443930011A00D /* FolderView.swift */; };
+		C569F1B82A9687980011A00D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569F1B72A9687980011A00D /* TabBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		C569F1AC2A93E3F00011A00D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C569F1B32A94006F0011A00D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C569F1B52A9443930011A00D /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
+		C569F1B72A9687980011A00D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				C569F1A52A93E3EF0011A00D /* CoreDataAndAPIApp.swift */,
+				C569F1B72A9687980011A00D /* TabBarView.swift */,
 				C569F1A72A93E3EF0011A00D /* ContentView.swift */,
 				C569F1B32A94006F0011A00D /* DetailView.swift */,
 				C569F1B52A9443930011A00D /* FolderView.swift */,
@@ -156,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C569F1A82A93E3EF0011A00D /* ContentView.swift in Sources */,
+				C569F1B82A9687980011A00D /* TabBarView.swift in Sources */,
 				C569F1B42A94006F0011A00D /* DetailView.swift in Sources */,
 				C569F1B62A9443930011A00D /* FolderView.swift in Sources */,
 				2F934F952A94DD11007B7E2F /* AppsView.swift in Sources */,
