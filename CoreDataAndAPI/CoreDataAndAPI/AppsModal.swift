@@ -25,21 +25,11 @@ struct AppsModal: View {
                         Text("\(project.name)")
                             .foregroundColor(.black)
                     }
-                    .onDelete(perform: deleteAppInfos)
                 }
                 .navigationTitle("All Apps")
             }
             .onAppear(perform: viewModel.fetchProjects)            
             .navigationBarTitle("Apps", displayMode: .inline)
         }
-    }
-    
-    func deleteAppInfos(at offsets: IndexSet) {
-        for offset in offsets {
-            let app = apps[offset]
-            moc.delete(app)
-        }
-        
-        try? moc.save()
     }
 }

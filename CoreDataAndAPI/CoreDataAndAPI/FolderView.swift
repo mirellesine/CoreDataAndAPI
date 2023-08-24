@@ -50,7 +50,7 @@ struct FolderView: View {
                 }
             }
             .sheet(isPresented: $showingAppsModal) {
-                //AppsModal()
+                AppsModal()
             }
         }
     }
