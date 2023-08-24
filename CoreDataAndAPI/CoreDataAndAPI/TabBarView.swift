@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-struct TabBarView: View {
-    var body: some View {
-        TabView {
-            ContentView()
-                .tabItem {
-                    Label("Folders", systemImage: "folder")
-                }
-            
-            AppsView()
-                .tabItem {
-                    Label("Apps", systemImage: "app")
-                }
-        }
-    }
-}
-
-struct TabBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBarView()
-    }
-}
+//struct TabBarView: View {
+//    var body: some View {
+//        TabView {
+//            ContentView()
+//                .tabItem {
+//                    Label("Folders", systemImage: "folder")
+//                }
+//            
+//            AppsView()
+//                .tabItem {
+//                    Label("Apps", systemImage: "app")
+//                }
+//        }
+//    }
+//}
+//
+//struct TabBarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabBarView()
+//    }
+//}

@@ -9,6 +9,7 @@ import CoreData
 import Foundation
 
 class DataController: ObservableObject {
+    // Cria uma instância de NSPersistentContainer com o nome "CoreDataAndAPI"
     let container = NSPersistentContainer(name: "CoreDataAndAPI")
 
     init() {
@@ -17,5 +18,7 @@ class DataController: ObservableObject {
                 print("Core Data failed to load: \(error.localizedDescription)")
             }
         }
+        
+        container.viewContext
     }
 }

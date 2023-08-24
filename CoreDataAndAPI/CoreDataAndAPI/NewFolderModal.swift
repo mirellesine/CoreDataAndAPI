@@ -10,10 +10,13 @@ import SwiftUI
 // Essa view cria uma nova pasta
 struct NewFolderModal: View {
     
-    @State private var folderName = ""
+    
     //variavel responsavel por fechar a modal
     @Environment(\.dismiss) var dismiss
-
+    @Environment(\.managedObjectContext) var moc
+    
+    @State private var folderName = ""
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -29,8 +32,13 @@ struct NewFolderModal: View {
             }, label: {
                 Text("Cancel")
             }), trailing: Button(action: {
-                // Salvar a nova pasta
-                print("salvar a ação")
+                let newFolder = Folder(context: moc)
+                newFolder.id = UUID()
+                newFolder.name = folderName
+                
+                try? moc.save()
+                dismiss()
+                
             }, label: {
                 Text("Done").bold()
             }))

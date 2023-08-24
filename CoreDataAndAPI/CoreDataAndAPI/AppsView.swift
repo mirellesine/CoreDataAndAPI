@@ -9,6 +9,7 @@ import SwiftUI
 
 // Essa view lista todos os apps da API e, ao clicar nos apps, é possível visualizar os detalhes de cada um
 struct AppsView: View {
+
     let appIcon = "apps.iphone"
     @ObservedObject var viewModel = ProjectViewModel()
     
@@ -24,6 +25,7 @@ struct AppsView: View {
                         }
                     }
                 }
+                .navigationTitle("All Apps")
             }
             .navigationBarTitle("All Apps")
             .onAppear(perform: viewModel.fetchProjects)
@@ -31,10 +33,10 @@ struct AppsView: View {
         
     }
 }
-
-
-struct AppsView_Previews: PreviewProvider {
-    static var previews: some View {
-        AppsView()
-    }
-}
+    
+//    struct AppsView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            AppsView( apps: <#FetchRequest<AppInfo>#>)
+//        }
+//    }
+//}

@@ -8,7 +8,9 @@
 import SwiftUI
 
 // Essa view é acessada ao clicar no + dentro de uma pasta. Lista todos os apps da API e adiciona na pasta quando o usuário seleciona um deles
+
 struct AppsModal: View {
+
     @ObservedObject var viewModel = ProjectViewModel()
     
     var body: some View {
@@ -23,15 +25,21 @@ struct AppsModal: View {
                         Text("\(project.name)")
                             .foregroundColor(.black)
                     }
+                    .onDelete(perform: deleteAppInfos)
                 }
+                .navigationTitle("All Apps")
             }
-            .onAppear(perform: viewModel.fetchProjects)            .navigationBarTitle("Apps", displayMode: .inline)
+            .onAppear(perform: viewModel.fetchProjects)            
+            .navigationBarTitle("Apps", displayMode: .inline)
         }
     }
-}
-
-struct AppsModal_Previews: PreviewProvider {
-    static var previews: some View {
-        AppsModal()
+    
+    func deleteAppInfos(at offsets: IndexSet) {
+        for offset in offsets {
+            let app = apps[offset]
+            moc.delete(app)
+        }
+        
+        try? moc.save()
     }
 }

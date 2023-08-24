@@ -21,6 +21,7 @@
 		C569F1B42A94006F0011A00D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569F1B32A94006F0011A00D /* DetailView.swift */; };
 		C569F1B62A9443930011A00D /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569F1B52A9443930011A00D /* FolderView.swift */; };
 		C569F1B82A9687980011A00D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569F1B72A9687980011A00D /* TabBarView.swift */; };
+		C569F1BB2A968BB30011A00D /* CoreDataAndAPI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C569F1B92A968BB30011A00D /* CoreDataAndAPI.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		C569F1B32A94006F0011A00D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C569F1B52A9443930011A00D /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
 		C569F1B72A9687980011A00D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		C569F1BA2A968BB30011A00D /* CoreDataAndAPI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataAndAPI.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,15 +76,22 @@
 				C569F1A52A93E3EF0011A00D /* CoreDataAndAPIApp.swift */,
 				C569F1B72A9687980011A00D /* TabBarView.swift */,
 				C569F1A72A93E3EF0011A00D /* ContentView.swift */,
+				2F934F962A94DD22007B7E2F /* NewFolderModal.swift */,
+
 				C569F1B32A94006F0011A00D /* DetailView.swift */,
 				2FB62E882A976FE30086CF12 /* ProjectDetailView.swift */,
+
 				C569F1B52A9443930011A00D /* FolderView.swift */,
 				2F934F942A94DD11007B7E2F /* AppsView.swift */,
-				2F934F962A94DD22007B7E2F /* NewFolderModal.swift */,
 				2F934F982A94DD31007B7E2F /* AppsModal.swift */,
+
+				C569F1B32A94006F0011A00D /* DetailView.swift */,
+
 				2FB62E842A976A0A0086CF12 /* ProjectModel.swift */,
 				2FB62E862A976A680086CF12 /* ProjectViewModel.swift */,
+
 				2F934F9A2A94DFB3007B7E2F /* DataController.swift */,
+				C569F1B92A968BB30011A00D /* CoreDataAndAPI.xcdatamodeld */,
 				C569F1A92A93E3F00011A00D /* Assets.xcassets */,
 				C569F1AB2A93E3F00011A00D /* Preview Content */,
 			);
@@ -176,6 +185,7 @@
 				2F934F992A94DD31007B7E2F /* AppsModal.swift in Sources */,
 				2FB62E872A976A680086CF12 /* ProjectViewModel.swift in Sources */,
 				2F934F9B2A94DFB3007B7E2F /* DataController.swift in Sources */,
+				C569F1BB2A968BB30011A00D /* CoreDataAndAPI.xcdatamodeld in Sources */,
 				2F934F972A94DD22007B7E2F /* NewFolderModal.swift in Sources */,
 				C569F1A62A93E3EF0011A00D /* CoreDataAndAPIApp.swift in Sources */,
 				2FB62E892A976FE30086CF12 /* ProjectDetailView.swift in Sources */,
@@ -379,6 +389,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C569F1B92A968BB30011A00D /* CoreDataAndAPI.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C569F1BA2A968BB30011A00D /* CoreDataAndAPI.xcdatamodel */,
+			);
+			currentVersion = C569F1BA2A968BB30011A00D /* CoreDataAndAPI.xcdatamodel */;
+			path = CoreDataAndAPI.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C569F19A2A93E3EF0011A00D /* Project object */;
 }
