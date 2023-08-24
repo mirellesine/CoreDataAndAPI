@@ -15,7 +15,7 @@ struct CoreDataAndAPIApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabBarView()
             //configura o ambiente para fornecer o contexto de gerenciamento do core data da instancia de DataController
             .environment(\.managedObjectContext, dataController.container.viewContext)
         }

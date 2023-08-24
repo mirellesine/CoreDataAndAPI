@@ -15,7 +15,7 @@ struct AppsModal: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.projects) { project in
+            List(viewModel.filteredProjects) { project in
                 Button(action: {
                     //adicionar aqui a ação de clicar no app
                     print("item checked: \(project.name)")
@@ -31,5 +31,6 @@ struct AppsModal: View {
             .onAppear(perform: viewModel.fetchProjects)            
             .navigationBarTitle("Apps", displayMode: .inline)
         }
+        .searchable(text: $viewModel.searchText)
     }
 }

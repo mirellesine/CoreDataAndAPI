@@ -11,8 +11,17 @@ import Combine
 // VIEW MODEL DA LISTA DE PROJETOS
 class ProjectViewModel: ObservableObject {
     @Published var projects: [Project] = [] // lista de projetos/apps
+    @Published var searchText: String = ""
     
     private var projectFetchTask: AnyCancellable? // task de busca de projetos
+    
+    var filteredProjects: [Project] {
+        guard !searchText.isEmpty else { return projects }
+        
+        return projects.filter { project in
+            project.name.lowercased().contains(searchText.lowercased())
+        }
+    }
     
     func fetchProjects() {
         
