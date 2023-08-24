@@ -6,36 +6,32 @@
 //
 
 import Foundation
+import Combine
 
 // VIEW MODEL DA LISTA DE PROJETOS
 class ProjectViewModel: ObservableObject {
     @Published var projects: [Project] = []
-    
-    // função para fazer o fetch dos apps na API
-    func fetchProjects() {
-        guard let url = URL(string: "https://api-project-academy-9cf71ea0cac6.herokuapp.com/project") else { return }
-        
-        // criação da sessão
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            // guard let para verificar se tem algum dado a ser recebido da API
-            guard let data = data, error == nil else { return }
-            
-            // criação de uma instancia do decodificador
-            let decoder = JSONDecoder()
-            
-            // decodificação do JSON
-            if let decodedProjects = try? decoder.decode([Project].self, from: data) {
-                // atualiza a view de projetos
-                DispatchQueue.main.async {
-                    self.projects = decodedProjects
-                }
-            }
-        }.resume() // inicia o fetch da API
-    }
+
+        private var cancellables: Set<AnyCancellable> = []
+
+        func fetchProjects() {
+            guard let url = URL(string: "https://api-project-academy-9cf71ea0cac6.herokuapp.com/project") else { return }
+
+            URLSession.shared.dataTaskPublisher(for: url)
+                .map(\.data)
+                .decode(type: [Project].self, decoder: JSONDecoder())
+                .replaceError(with: [])
+                .receive(on: DispatchQueue.main)
+                .assign(to: \.projects, on: self)
+                .store(in: &cancellables)
+        }
 }
 
 
 /*
+ 
+ 
+ 
  ARRUMA AS URLs (?):
  
  DispatchQueue.main.async {
