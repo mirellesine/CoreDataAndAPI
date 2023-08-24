@@ -46,11 +46,11 @@ struct AppsView: View {
             }
         }
     }
-    
-    
-    struct AppsView_Previews: PreviewProvider {
-        static var previews: some View {
-            AppsView( apps: <#FetchRequest<AppInfo>#>)
-        }
-    }
 }
+    
+//    struct AppsView_Previews: PreviewProvider {
+//        static var previews: some View {
+//            AppsView( apps: <#FetchRequest<AppInfo>#>)
+//        }
+//    }
+//}

@@ -7,13 +7,7 @@
 
 import SwiftUI
 
-//struct Folder: Identifiable {
-//    var id = UUID()
-//    var name: String
-//}
-
 struct ContentView: View {
-    let folder: Folder
     
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: [
@@ -25,7 +19,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            ScrollView {
+            List {
                 ForEach(folders) { folder in
                     NavigationLink {
                         FolderView()
@@ -35,15 +29,14 @@ struct ContentView: View {
                                 .foregroundColor(.cyan)
                                     .font(.title)
                             VStack(alignment: .leading) {
-                                //Text(book)
+                                Text(folder.name ?? "Unknown name")
                                     .font(.headline)
-                                
-                                Text("descricao")
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.black)
                             }
                         }
                     }
                 }
+                .onDelete(perform: deleteFolders)
             }
                 .navigationTitle("Folders")
                 .toolbar {
@@ -59,6 +52,14 @@ struct ContentView: View {
                     NewFolderModal()
                 }
         }
+    }
+    func deleteFolders(at offsets: IndexSet) {
+        for offset in offsets {
+            let folder = folders[offset]
+            moc.delete(folder)
+        }
+
+        try? moc.save()
     }
 }
 

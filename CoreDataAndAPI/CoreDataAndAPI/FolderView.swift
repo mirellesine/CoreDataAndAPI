@@ -7,35 +7,33 @@
 
 import SwiftUI
 
-//elementos que o app pode ter
-struct Application: Identifiable {
-    var id = UUID()
-    var name: String
-}
-
 //essa view apresenta tudo que tem dentro da pasta
 struct FolderView: View {
+    @Environment(\.managedObjectContext) var moc
+    
+    @FetchRequest(sortDescriptors: [
+        SortDescriptor(\.name),
+        SortDescriptor(\.id)
+    ]) var folders: FetchedResults<Folder>
+    
     @State private var showingAppsModal = false
     
-
     var body: some View {
         
         NavigationStack {
             List {
-                ForEach(apps) { folder in
+                ForEach(folders) { folder in
                     NavigationLink {
-                        DetailView(app: apps)
+                        //precisa do relacionamento
+                        //AppsModal(apps: apps)
                     } label: {
                         HStack {
                             Image(systemName: "app")
                                 .foregroundColor(.cyan)
                                 .font(.title)
                             VStack(alignment: .leading) {
-                                Text(folder.name)
+                                Text(folder.name ?? "Unknown folder")
                                     .font(.headline)
-                                
-                                Text("descricao")
-                                    .foregroundColor(.secondary)
                             }
                         }
                     }
@@ -52,7 +50,7 @@ struct FolderView: View {
                 }
             }
             .sheet(isPresented: $showingAppsModal) {
-                AppsModal()
+                //AppsModal()
             }
         }
     }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 // Essa view é acessada ao clicar no + dentro de uma pasta. Lista todos os apps da API e adiciona na pasta quando o usuário seleciona um deles
+
 struct AppsModal: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest var apps: FetchedResults<AppInfo>
@@ -21,7 +22,7 @@ struct AppsModal: View {
     var body: some View {
         NavigationView {
             VStack {
-                List{
+                List {
                     ForEach(apps) { app in
                         NavigationLink {
                             DetailView(app: app)
@@ -41,15 +42,19 @@ struct AppsModal: View {
                             }
                         }
                     }
+                    .onDelete(perform: deleteAppInfos)
                 }
                 .navigationTitle("All Apps")
             }
         }
     }
     
-    struct AppsModal_Previews: PreviewProvider {
-        static var previews: some View {
-            AppsModal( apps: <#FetchRequest<AppInfo>#>)
+    func deleteAppInfos(at offsets: IndexSet) {
+        for offset in offsets {
+            let app = apps[offset]
+            moc.delete(app)
         }
+        
+        try? moc.save()
     }
 }
