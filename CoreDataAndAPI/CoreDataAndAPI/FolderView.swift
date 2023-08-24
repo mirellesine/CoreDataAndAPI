@@ -17,19 +17,14 @@ struct Application: Identifiable {
 struct FolderView: View {
     @State private var showingAppsModal = false
     
-    let apps: [Application] = [
-        Application(name: "App 1"),
-        Application(name: "App 2"),
-        Application(name: "App 3"),
-        Application(name: "App 4")
-    ]
+
     var body: some View {
         
         NavigationStack {
             List {
                 ForEach(apps) { folder in
                     NavigationLink {
-                        DetailView(apps: "app")
+                        DetailView(app: apps)
                     } label: {
                         HStack {
                             Image(systemName: "app")

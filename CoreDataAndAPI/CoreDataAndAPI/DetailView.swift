@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct DetailView: View {
-    let apps: String
+    let app: AppInfo
     
+    @Environment(\.managedObjectContext) var moc
     @Environment(\.dismiss) var dismiss
     @State private var showingDeleteAlert = false
     
@@ -34,7 +35,7 @@ struct DetailView: View {
         .navigationTitle("Name of the app")
         .navigationBarTitleDisplayMode(.inline)
         .alert("Delete App ?", isPresented: $showingDeleteAlert) {
-            //Button("Delete", role: .destructive, action: deleteapps)
+            Button("Delete", role: .destructive, action: deleteAppInfo)
             Button("Cancel", role: .cancel) { }
         } message: {
             Text("Are you sure?")
@@ -43,17 +44,22 @@ struct DetailView: View {
             Button {
                 showingDeleteAlert = true
             } label: {
-                Label("Delete this book", systemImage: "trash")
+                Label("Delete this app", systemImage: "trash")
             }
         }
     }
-    
-}
+    func deleteAppInfo() {
+        moc.delete(app)
 
-struct DetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            DetailView(apps: "app")
-        }
+        try? moc.save()
+        dismiss()
     }
 }
+
+//struct DetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack {
+//            DetailView(apps: "app")
+//        }
+//    }
+//}
