@@ -11,36 +11,39 @@ struct ProjectDetailView: View {
     let project: Project
     
     var body: some View {
-        VStack {
-            // ícone do projeto
-            AsyncImage(url: project.imgIcon) { image in
-                image.resizable()
-            } placeholder: {
-                ProgressView()
-            }.frame(width: 100, height: 100)
-            
-            // nome, turma e descrição
+        ScrollView {
             VStack {
-                ProjectInfo(project: project)
-            }
-            
-            Divider()
-            
-            // info do CBL
-            VStack {
-                CBLInfo(project: project)
-            }
-            
-            // link app store
-            
-            VStack {
-                AppStoreButton(project: project)
-            }
-            
-            Spacer()
+                // ícone do projeto
+                AsyncImage(url: project.imgIcon) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }.frame(width: 100, height: 100)
+                
+                // nome, turma e descrição
+                VStack {
+                    ProjectInfo(project: project)
+                }
+                
+                Divider().padding()
+                
+                // info do CBL
+                VStack(alignment: .leading) {
+                    CBLInfo(project: project)
+                }
+                
+                Divider().padding()
+                
+                // link app store
+                VStack {
+                    AppStoreButton(project: project)
+                }
+                Spacer()
+                
+            }.padding()
+                .navigationBarTitle("")
+                .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationBarTitle("")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -49,11 +52,13 @@ struct ProjectInfo: View {
     let project: Project
     var body: some View {
         VStack {
-            Text(project.name).font(.title)
-            Text(project.turma).font(.headline)
+            Text(project.name)
+                .font(.title)
+            Text(project.turma)
+                .font(.headline)
+                .padding(.bottom)
             Text(project.description)
                 .font(.subheadline)
-                .padding(.vertical)
         }
     }
 }
@@ -63,10 +68,28 @@ struct CBLInfo: View {
     
     var body: some View {
         VStack {
-            Text(project.bigIdea)
-            Text(project.challenge)
-            Text(project.essentialQuestion)
-        }
+            Text("Big idea: ")
+                .bold()
+                .font(.callout)
+            + Text("\(project.bigIdea)")
+                .font(.callout)
+        }.padding(.bottom, 2)
+        
+        VStack {
+            Text("Challenge: ")
+                .bold()
+                .font(.callout)
+            + Text("\(project.challenge)")
+                .font(.callout)
+        }.padding(.bottom, 2)
+        
+        VStack {
+            Text("Essential Question: ")
+                .bold()
+                .font(.callout)
+            + Text("\(project.essentialQuestion)")
+                .font(.callout)
+        }.padding(.bottom, 2)
     }
 }
 
