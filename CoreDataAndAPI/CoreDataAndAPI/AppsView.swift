@@ -19,12 +19,14 @@ struct AppsView: View {
             VStack {
                 List(viewModel.filteredProjects) { project in
                     NavigationLink(destination: ProjectDetailView(project: project)) {
-                        HStack(alignment: .top) {
-                            Image(systemName: "app")
-                                .foregroundColor(.cyan)
-                            VStack() {
-                                Text("\(project.name)")
-                            }
+                        HStack {
+                            AsyncImage(url: project.imgIcon) { image in
+                                image.resizable()
+                            } placeholder: {
+                                ProgressView()
+                            }.frame(width: 30, height: 30)
+                            .padding(5)
+                            Text(project.name)
                         }
                     }
                 }

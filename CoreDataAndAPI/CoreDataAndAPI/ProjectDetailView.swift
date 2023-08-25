@@ -11,14 +11,26 @@ struct ProjectDetailView: View {
     let project: Project
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(project.description).padding()
+        VStack {
             
-            Text("\(project.link)").padding()
-                .foregroundColor(.cyan)
+            AsyncImage(url: project.imgIcon) { image in
+                image.resizable()
+            } placeholder: {
+                ProgressView()
+            }.frame(width: 100, height: 100)
+            
+            Text(project.name).font(.title)
+            Text(project.turma).font(.headline)
+            Text(project.description)
+                .font(.subheadline)
+                .padding(.vertical)
+            Divider()
+            Text(project.bigIdea)
+            Text(project.challenge)
+            Text(project.essentialQuestion)
             Spacer()
         }
-        .padding()
-        .navigationBarTitle("\(project.name)")
+        .navigationBarTitle("")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
