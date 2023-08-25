@@ -22,6 +22,8 @@
 		C569F1B62A9443930011A00D /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569F1B52A9443930011A00D /* FolderView.swift */; };
 		C569F1B82A9687980011A00D /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C569F1B72A9687980011A00D /* TabBarView.swift */; };
 		C569F1BB2A968BB30011A00D /* CoreDataAndAPI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C569F1B92A968BB30011A00D /* CoreDataAndAPI.xcdatamodeld */; };
+		C9F180692A991F3B003A2438 /* PostAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F180682A991F3B003A2438 /* PostAppView.swift */; };
+		C9F1806C2A99247A003A2438 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C9F1806B2A99247A003A2438 /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,7 @@
 		C569F1B52A9443930011A00D /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
 		C569F1B72A9687980011A00D /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		C569F1BA2A968BB30011A00D /* CoreDataAndAPI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataAndAPI.xcdatamodel; sourceTree = "<group>"; };
+		C9F180682A991F3B003A2438 /* PostAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F1806C2A99247A003A2438 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +92,7 @@
 				C569F1B92A968BB30011A00D /* CoreDataAndAPI.xcdatamodeld */,
 				C569F1A92A93E3F00011A00D /* Assets.xcassets */,
 				C569F1AB2A93E3F00011A00D /* Preview Content */,
+				C9F180682A991F3B003A2438 /* PostAppView.swift */,
 			);
 			path = CoreDataAndAPI;
 			sourceTree = "<group>";
@@ -116,6 +121,9 @@
 			dependencies = (
 			);
 			name = CoreDataAndAPI;
+			packageProductDependencies = (
+				C9F1806B2A99247A003A2438 /* Alamofire */,
+			);
 			productName = CoreDataAndAPI;
 			productReference = C569F1A22A93E3EF0011A00D /* CoreDataAndAPI.app */;
 			productType = "com.apple.product-type.application";
@@ -144,6 +152,9 @@
 				Base,
 			);
 			mainGroup = C569F1992A93E3EF0011A00D;
+			packageReferences = (
+				C9F1806A2A99247A003A2438 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = C569F1A32A93E3EF0011A00D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -174,6 +185,7 @@
 				C569F1B82A9687980011A00D /* TabBarView.swift in Sources */,
 				C569F1B42A94006F0011A00D /* DetailView.swift in Sources */,
 				C569F1B62A9443930011A00D /* FolderView.swift in Sources */,
+				C9F180692A991F3B003A2438 /* PostAppView.swift in Sources */,
 				2F934F952A94DD11007B7E2F /* AppsView.swift in Sources */,
 				2FB62E852A976A0A0086CF12 /* ProjectModel.swift in Sources */,
 				2F934F992A94DD31007B7E2F /* AppsModal.swift in Sources */,
@@ -383,6 +395,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C9F1806A2A99247A003A2438 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C9F1806B2A99247A003A2438 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C9F1806A2A99247A003A2438 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C569F1B92A968BB30011A00D /* CoreDataAndAPI.xcdatamodeld */ = {
