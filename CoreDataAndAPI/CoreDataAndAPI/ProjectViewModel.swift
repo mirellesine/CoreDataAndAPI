@@ -39,16 +39,3 @@ class ProjectViewModel: ObservableObject {
             })
     }
 }
-
-
-/*
- ARRUMA AS URLs (?):
- 
- DispatchQueue.main.async {
- self.projects = decodedProjects.map { project in
- var urlFix = project
- urlFix.imgIcon = URL(string: project.imgIcon.absoluteString.replacingOccurrences(of: "\\/", with: "/"))!
- return urlFix
- }
- }
- */

@@ -55,11 +55,3 @@ struct DetailView: View {
         dismiss()
     }
 }
-
-//struct DetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationStack {
-//            DetailView(apps: "app")
-//        }
-//    }
-//}

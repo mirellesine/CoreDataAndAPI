@@ -106,7 +106,7 @@ struct AppStoreButton: View {
                         .frame(height: 60)
                 })
             } else {
-                Text("Invalid Link")
+                Text("")
             }
         }
     }

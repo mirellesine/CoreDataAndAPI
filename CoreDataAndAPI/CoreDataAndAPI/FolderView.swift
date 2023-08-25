@@ -33,10 +33,8 @@ struct FolderView: View {
                         HStack {
                             Image(systemName: "app")
                                 .foregroundColor(.cyan)
-                                .font(.title)
                             VStack(alignment: .leading) {
-                                Text(app.name ?? "Unknown folder")
-                                    .font(.headline)
+                                Text(app.name ?? "Unknown app")
                             }
                         }
                     }

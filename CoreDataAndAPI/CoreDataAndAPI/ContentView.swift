@@ -27,10 +27,8 @@ struct ContentView: View {
                         HStack {
                             Image(systemName: "folder")
                                 .foregroundColor(.cyan)
-                                    .font(.title)
-                            VStack(alignment: .leading) {
-                                Text(folder.name ?? "Unknown name")
-                                    .font(.headline)
+                            VStack() {
+                                Text(folder.name ?? "Unknown folder")
                                     .foregroundColor(.black)
                             }
                         }
