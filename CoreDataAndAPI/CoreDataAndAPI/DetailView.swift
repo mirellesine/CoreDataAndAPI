@@ -22,17 +22,17 @@ struct DetailView: View {
                     .scaledToFit()
             }
             
-            Text("Name of the app")
+            Text(app.name ?? "")
                 .font(.title)
                 .foregroundColor(.secondary)
             
-            Text("Description")
+            Text(app.details ?? "")
                 .font(.callout)
                 .padding()
             
             
         }
-        .navigationTitle("Name of the app")
+        .navigationTitle(app.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .alert("Delete App ?", isPresented: $showingDeleteAlert) {
             Button("Delete", role: .destructive, action: deleteAppInfo)

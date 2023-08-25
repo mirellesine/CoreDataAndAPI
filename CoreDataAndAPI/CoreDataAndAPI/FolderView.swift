@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CoreData
+
 
 //essa view apresenta tudo que tem dentro da pasta
 struct FolderView: View {
@@ -18,28 +20,30 @@ struct FolderView: View {
     
     @State private var showingAppsModal = false
     
+    let folder: Folder
+    
     var body: some View {
         
         NavigationStack {
             List {
-                ForEach(folders) { folder in
+                ForEach(fetchApps(for: folder)) { app in
                     NavigationLink {
-                        //precisa do relacionamento
-                        //AppsModal(apps: apps)
+                        DetailView(app: app)
                     } label: {
                         HStack {
                             Image(systemName: "app")
                                 .foregroundColor(.cyan)
                                 .font(.title)
                             VStack(alignment: .leading) {
-                                Text(folder.name ?? "Unknown folder")
+                                Text(app.name ?? "Unknown folder")
                                     .font(.headline)
                             }
                         }
                     }
                 }
+                .onDelete(perform: deleteApp)
             }
-            .navigationTitle("Apps on this Folder")
+            .navigationTitle(folder.name ?? "")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -50,14 +54,35 @@ struct FolderView: View {
                 }
             }
             .sheet(isPresented: $showingAppsModal) {
-                AppsModal()
+                AppsModal(folder: folder)
             }
         }
     }
     
-    struct FolderView_Previews: PreviewProvider {
-        static var previews: some View {
-            FolderView()
+    func deleteApp(at offsets: IndexSet) {
+        for index in offsets {
+            let appToDelete = fetchApps(for: folder)[index]
+            moc.delete(appToDelete)
+        }
+        
+        do {
+            try moc.save()
+        } catch {
+            fatalError("Error deleting app: \(error)")
+        }
+    }
+
+    
+    func fetchApps(for folder: Folder) -> [AppInfo] {
+        let fetchRequest: NSFetchRequest<AppInfo> = AppInfo.fetchRequest()
+
+        fetchRequest.predicate = NSPredicate(format: "ANY app_folder == %@", folder)
+
+        do {
+            let apps = try moc.fetch(fetchRequest)
+            return apps
+        } catch {
+            fatalError("Error fetching apps: \(error)")
         }
     }
 }
