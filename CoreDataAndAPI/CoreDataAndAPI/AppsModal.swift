@@ -12,13 +12,16 @@ import SwiftUI
 struct AppsModal: View {
 
     @ObservedObject var viewModel = ProjectViewModel()
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.dismiss) var dismiss
+    
+    let folder: Folder
     
     var body: some View {
         NavigationView {
             List(viewModel.filteredProjects) { project in
                 Button(action: {
-                    //adicionar aqui a ação de clicar no app
-                    print("item checked: \(project.name)")
+                    addAppFolder(project: project)
                 }) {
                     HStack(alignment: .top) {
                         Image(systemName: "app") // app icon
@@ -32,5 +35,18 @@ struct AppsModal: View {
             .navigationBarTitle("Apps", displayMode: .inline)
         }
         .searchable(text: $viewModel.searchText)
+    }
+    
+    func addAppFolder(project: Project){
+        let app = AppInfo(context: moc)
+        app.id = project.id
+        app.name = project.name
+        app.details = project.description
+        
+        folder.addToApp_folder(app)
+        
+        
+        try? moc.save()
+        dismiss()
     }
 }

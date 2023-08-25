@@ -10,9 +10,9 @@ import SwiftUI
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) var moc
-    @FetchRequest(sortDescriptors: [
-        SortDescriptor(\.name)
-    ]) var folders: FetchedResults<Folder>
+    @FetchRequest(
+            sortDescriptors: [NSSortDescriptor(keyPath: \Folder.name, ascending: true)]
+        ) var folders: FetchedResults<Folder>
     
     // state para abrir a modal
     @State private var showingNewFolderModal = false
@@ -22,7 +22,7 @@ struct ContentView: View {
             List {
                 ForEach(folders) { folder in
                     NavigationLink {
-                        FolderView()
+                        FolderView(folder: folder)
                     } label: {
                         HStack {
                             Image(systemName: "folder")
