@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Alamofire
 
 // VIEW MODEL DA LISTA DE PROJETOS
 class ProjectViewModel: ObservableObject {
@@ -37,5 +38,23 @@ class ProjectViewModel: ObservableObject {
             .sink(receiveValue: { [weak self] decodedProjects in
                 self?.projects = decodedProjects // atualiza a lista de projetos
             })
+    }
+    
+    // função solicitação post que envia o projeto, e usa um closure que será chamado quando a solicitação for concluída
+    func postProjects(app: ProjectPost, completion: @escaping (Result<Void, Error>) -> Void) {
+        
+        // Usa Alamofire para fazer a solicitação HTTP POST.
+        AF.request("https://api-project-academy-9cf71ea0cac6.herokuapp.com/project",
+                   method: .post,
+                   parameters: app,
+                   encoder: JSONParameterEncoder.default).response { response in
+            debugPrint(response)
+            if let statusCode = response.response?.statusCode, (200...299).contains(statusCode) {
+                completion(.success(())) // Indica sucesso vazio
+            } else {
+                let error = NSError(domain: "CustomErrorDomain", code: 400, userInfo: nil)
+                completion(.failure(error)) // Indica um erro
+            }
+        }
     }
 }

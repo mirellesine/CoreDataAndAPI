@@ -19,6 +19,11 @@ struct TabBarView: View {
                 .tabItem {
                     Label("Apps", systemImage: "app")
                 }
+            
+            PostAppView()
+                .tabItem {
+                    Label("Publish", systemImage: "app")
+                }
         }
     }
 }
