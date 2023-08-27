@@ -19,3 +19,18 @@ struct Project: Codable, Identifiable {
     var imgIcon: URL
     var imgScreenshot: URL
 }
+
+
+struct ProjectPost: Encodable, Identifiable {
+    let id: UUID
+    var name: String
+    var turma: String
+    var description: String
+    var bigIdea: String
+    var challenge: String
+    var essentialQuestion: String
+    var link: String
+    var imgIcon: Data?
+    var imgScreenshot: Data?
+    var ativo:String = "true"
+}
