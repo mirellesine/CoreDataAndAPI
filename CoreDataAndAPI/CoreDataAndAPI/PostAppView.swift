@@ -119,6 +119,7 @@ struct PostAppView: View {
                             switch result {
                             case .success:
                                 showAlert(title: "Success", message: "Project published successfully.")
+                                clearFields()
                             case .failure:
                                 showAlert(title: "Error", message: "There was an error, please check all fields and try again.")
                             }
@@ -143,6 +144,10 @@ struct PostAppView: View {
         alertMessage.title = title
         alertMessage.message = message
         alertMessage.show = true
+    }
+    
+    func clearFields(){
+        project = ProjectPost(id: UUID(), name: "", turma: "", description: "", bigIdea: "", challenge: "", essentialQuestion: "", link: "")
     }
 }
 
