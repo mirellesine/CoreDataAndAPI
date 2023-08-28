@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
     
-    @StateObject private var loginViewModel = LoginViewModel()
+    @StateObject private var loginViewModel = LoginModel()
 
     var body: some View {
         TabView {

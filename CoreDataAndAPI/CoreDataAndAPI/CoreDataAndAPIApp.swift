@@ -12,7 +12,7 @@ struct CoreDataAndAPIApp: App {
     
     // Cria uma instância de DataController como uma propriedade com estado
     @StateObject private var dataController = DataController()
-    @StateObject private var loginViewModel = LoginViewModel()
+    @StateObject private var loginViewModel = LoginModel()
 
     var body: some Scene {
         WindowGroup {

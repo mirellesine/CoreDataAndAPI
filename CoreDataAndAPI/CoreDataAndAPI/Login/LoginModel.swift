@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class LoginViewModel: ObservableObject {
+class LoginModel: ObservableObject {
     @AppStorage("loginView") var loginView = true
     
     @AppStorage("login") var login = false

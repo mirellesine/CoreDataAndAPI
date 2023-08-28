@@ -12,7 +12,7 @@ import AuthenticationServices   // importe os Serviços de Autenticação para f
 // Start a new Login View
 struct LoginView: View {
     
-    @StateObject private var loginViewModel = LoginViewModel()
+    @StateObject private var loginViewModel = LoginModel()
     
     let roles = ["Student", "Mentor"]
     @State private var selectedRole:String = "Student"
