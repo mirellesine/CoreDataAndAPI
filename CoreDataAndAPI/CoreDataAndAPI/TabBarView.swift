@@ -17,12 +17,12 @@ struct TabBarView: View {
             
             AppsView()
                 .tabItem {
-                    Label("Apps", systemImage: "app")
+                    Label("Apps", systemImage: "square.grid.2x2.fill")
                 }
             
             PostAppView()
                 .tabItem {
-                    Label("Publish", systemImage: "app")
+                    Label("Publish", systemImage: "plus.app.fill")
                 }
         }
     }

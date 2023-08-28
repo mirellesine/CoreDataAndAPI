@@ -29,7 +29,7 @@ struct PostAppView: View {
                 
                 Section(header: Text("General")) {
                     TextField("Name", text: $project.name)
-                    TextField("Turma", text: $project.turma)
+                    TextField("Year", text: $project.turma)
                     TextField("Link", text: $project.link)
                 }
                 Section(header: Text("CBL")) {
@@ -40,7 +40,7 @@ struct PostAppView: View {
                 Section(header: Text("Description")) {
                     ZStack{
                         if project.description.isEmpty  {
-                            Text("The app covers about...")
+                            Text("Description of the app")
                                 .foregroundColor(Color(.placeholderText))
                                 .padding(EdgeInsets(top: 8, leading: 4, bottom: 8, trailing: 4))
                         }
@@ -65,7 +65,7 @@ struct PostAppView: View {
                             }
                         } else {
                             Label("Select icon", systemImage: "photo")
-                                .tint(.purple)
+                                .tint(.cyan)
                                 .controlSize(.large)
                                 .buttonStyle(.borderedProminent)
                         }
@@ -85,7 +85,7 @@ struct PostAppView: View {
                             }
                         } else {
                             Label("Select screenshot", systemImage: "photo")
-                                .tint(.purple)
+                                .tint(.cyan)
                                 .controlSize(.large)
                                 .buttonStyle(.borderedProminent)
                         }

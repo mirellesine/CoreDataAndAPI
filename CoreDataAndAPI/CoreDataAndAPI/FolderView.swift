@@ -31,8 +31,15 @@ struct FolderView: View {
                         DetailView(app: app)
                     } label: {
                         HStack {
-                            Image(systemName: "app")
-                                .foregroundColor(.cyan)
+                            if let appIconURL = URL(string: app.appIcon ?? "") {
+                                AsyncImage(url: appIconURL) { image in
+                                    image.resizable()
+                                } placeholder: {
+                                    ProgressView()
+                                }.frame(width: 30, height: 30)
+                            } else {
+                                Text("Invalid image")
+                            }
                             VStack(alignment: .leading) {
                                 Text(app.name ?? "Unknown app")
                             }

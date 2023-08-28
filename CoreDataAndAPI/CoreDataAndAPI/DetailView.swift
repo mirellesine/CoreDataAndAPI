@@ -17,21 +17,31 @@ struct DetailView: View {
     var body: some View {
         ScrollView {
             ZStack(alignment: .bottomTrailing) {
-                Image("Kids")
-                    .resizable()
-                    .scaledToFit()
+                if let appIconURL = URL(string: app.appIcon ?? "") {
+                    AsyncImage(url: appIconURL) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }.frame(width: 100, height: 100)
+                } else {
+                    Text("Invalid image")
+                }
             }
             
-            Text(app.name ?? "")
-                .font(.title)
-                .foregroundColor(.secondary)
+            // nome, turma e descrição
+            VStack {
+                ProjectInfoDetail(app: app)
+            }
             
-            Text(app.details ?? "")
-                .font(.callout)
-                .padding()
+            Divider().padding()
             
+            // info do CBL
+            VStack(alignment: .leading) {
+                CBLInfoDetail(app: app)
+            }
+            Spacer()
             
-        }
+        }.padding()
         .navigationTitle(app.name ?? "")
         .navigationBarTitleDisplayMode(.inline)
         .alert("Delete App ?", isPresented: $showingDeleteAlert) {
@@ -53,5 +63,51 @@ struct DetailView: View {
 
         try? moc.save()
         dismiss()
+    }
+}
+
+struct ProjectInfoDetail: View {
+    let app: AppInfo
+
+    var body: some View {
+        VStack {
+            Text(app.name ?? "Not found")
+                .font(.title)
+            Text(app.turma ?? "Not found")
+                .font(.headline)
+                .padding(.bottom)
+            Text(app.details ?? "Not found")
+                .font(.subheadline)
+        }
+    }
+}
+
+struct CBLInfoDetail: View {
+    let app: AppInfo
+
+    var body: some View {
+        VStack {
+            Text("Big idea: ")
+                .bold()
+                .font(.callout)
+            + Text(app.bigIdea ?? "Not found")
+                .font(.callout)
+        }.padding(.bottom, 2)
+        
+        VStack {
+            Text("Challenge: ")
+                .bold()
+                .font(.callout)
+            + Text(app.challenge ?? "Not found")
+                .font(.callout)
+        }.padding(.bottom, 2)
+        
+        VStack {
+            Text("Essential Question: ")
+                .bold()
+                .font(.callout)
+            + Text(app.essentialQuestion ?? "Not found")
+                .font(.callout)
+        }.padding(.bottom, 2)
     }
 }

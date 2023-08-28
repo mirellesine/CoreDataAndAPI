@@ -43,9 +43,15 @@ struct AppsModal: View {
     
     func addAppFolder(project: Project){
         let app = AppInfo(context: moc)
+        
         app.id = project.id
         app.name = project.name
         app.details = project.description
+        app.appIcon = project.imgIcon.absoluteString
+        app.essentialQuestion = project.essentialQuestion
+        app.challenge = project.challenge
+        app.bigIdea = project.bigIdea
+        app.turma = project.turma
         
         folder.addToApp_folder(app)
         
