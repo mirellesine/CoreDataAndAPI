@@ -8,22 +8,28 @@
 import SwiftUI
 
 struct TabBarView: View {
+    
+    @StateObject private var loginViewModel = LoginViewModel()
+
     var body: some View {
         TabView {
             ContentView()
                 .tabItem {
                     Label("Folders", systemImage: "folder")
                 }
+                .navigationTitle("Folders")
             
             AppsView()
                 .tabItem {
                     Label("Apps", systemImage: "app")
                 }
             
-            PostAppView()
-                .tabItem {
-                    Label("Publish", systemImage: "app")
-                }
+            if loginViewModel.role == "mentor" {
+                PostAppView()
+                    .tabItem {
+                        Label("Publish", systemImage: "app")
+                    }
+            }
         }
     }
 }
