@@ -89,21 +89,13 @@
 				C9F1806D2A9BF7A8003A2438 /* CoreDataAndAPI.entitlements */,
 				C569F1A52A93E3EF0011A00D /* CoreDataAndAPIApp.swift */,
 				C569F1B72A9687980011A00D /* TabBarView.swift */,
-				C569F1A72A93E3EF0011A00D /* ContentView.swift */,
-				2F934F962A94DD22007B7E2F /* NewFolderModal.swift */,
-				C569F1B52A9443930011A00D /* FolderView.swift */,
-				2FB62E882A976FE30086CF12 /* ProjectDetailView.swift */,
-				2F934F942A94DD11007B7E2F /* AppsView.swift */,
-				2F934F982A94DD31007B7E2F /* AppsModal.swift */,
-				C569F1B32A94006F0011A00D /* DetailView.swift */,
-				2FB62E842A976A0A0086CF12 /* ProjectModel.swift */,
-				2FB62E862A976A680086CF12 /* ProjectViewModel.swift */,
+				C92253AD2A9D420000DAAA18 /* Folder */,
+				C92253AE2A9D438F00DAAA18 /* Apps */,
+				C92253AC2A9D41A100DAAA18 /* Model */,
+				C9F180702A9C3C74003A2438 /* Login */,
 				2F934F9A2A94DFB3007B7E2F /* DataController.swift */,
-				C569F1B92A968BB30011A00D /* CoreDataAndAPI.xcdatamodeld */,
 				C569F1A92A93E3F00011A00D /* Assets.xcassets */,
 				C569F1AB2A93E3F00011A00D /* Preview Content */,
-				C9F180682A991F3B003A2438 /* PostAppView.swift */,
-				C9F180702A9C3C74003A2438 /* Login */,
 			);
 			path = CoreDataAndAPI;
 			sourceTree = "<group>";
@@ -116,13 +108,45 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		C92253AC2A9D41A100DAAA18 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FB62E842A976A0A0086CF12 /* ProjectModel.swift */,
+				C92253AA2A9D20AA00DAAA18 /* LoginModel.swift */,
+				C569F1B92A968BB30011A00D /* CoreDataAndAPI.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C92253AD2A9D420000DAAA18 /* Folder */ = {
+			isa = PBXGroup;
+			children = (
+				C569F1A72A93E3EF0011A00D /* ContentView.swift */,
+				C569F1B52A9443930011A00D /* FolderView.swift */,
+				2F934F962A94DD22007B7E2F /* NewFolderModal.swift */,
+			);
+			path = Folder;
+			sourceTree = "<group>";
+		};
+		C92253AE2A9D438F00DAAA18 /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				2F934F942A94DD11007B7E2F /* AppsView.swift */,
+				C569F1B32A94006F0011A00D /* DetailView.swift */,
+				2F934F982A94DD31007B7E2F /* AppsModal.swift */,
+				2FB62E862A976A680086CF12 /* ProjectViewModel.swift */,
+				2FB62E882A976FE30086CF12 /* ProjectDetailView.swift */,
+				C9F180682A991F3B003A2438 /* PostAppView.swift */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
 		C9F180702A9C3C74003A2438 /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				C9F1806E2A9BFC59003A2438 /* LoginView.swift */,
 				C9F180712A9C3C98003A2438 /* UserInfoView.swift */,
 				C9F180732A9C3D13003A2438 /* SignInWithApple.swift */,
-				C92253AA2A9D20AA00DAAA18 /* LoginModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
